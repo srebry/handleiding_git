@@ -119,7 +119,7 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 		\end{itemize}
 	\end{itemize}
 	
-	\subsection{Eerste commit} Nu kunnen we een toevoegen van het eerste bestand aan de repository doorvoeren. 
+	\subsection{Eerste commit} Nu kunnen we de toevoeging van het eerste bestand aan de repository doorvoeren. 
 	\begin{itemize}
 		\item Tik in het vak \texttt{Message} (onder \texttt{Changes} en boven de \texttt{Commit}-knop) een beschrijving van de aanpassingen, in dit geval bijvoorbeeld ``Initiële inhoud''.
 		\item Klik op \texttt{Commit}. Een pop-up vraagt ``stage all changes and commit?'', kies voor \texttt{Yes}. De rol van stage komt aan bod in sectie \ref{ssec:stage}.
@@ -164,17 +164,17 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 	
 	\subsection{Stage -- selecteren van aanpassingen voor commit}
 	\label{ssec:stage}
-	Hierboven werd een stap overgeslagen bij het committen. In een realistische workflow komt tussen opslaan en committen van aanpassingen nog het stagen. Niet alle wijzigingen die tegelijk in de werkmap aanwezig zijn, horen immers noodzakelijk in dezelfde commit thuis. Bekijk volgend voorbeeld: bij het schrijven van het eindverslag wordt figuur gemaakt en geïnterpreteerd in de tekst.
+	Hierboven werd een stap overgeslagen bij het committen. In een realistische workflow komt tussen opslaan en committen van aanpassingen nog het stagen. Niet alle wijzigingen die tegelijk in de werkmap aanwezig zijn, horen immers noodzakelijk in dezelfde commit thuis. Bekijk volgend voorbeeld: bij het schrijven van het eindverslag wordt een figuur gemaakt en geïnterpreteerd in de tekst.
 	\begin{itemize}
 		\item Het maken van de figuur, verzorgen van de assen en de legende gebeurt in een \texttt{Python}-notebook waar alle geschreven code wordt getest en geïllustreerd.
-		\item Het invoegen van de figuur, gebeurt in een \LaTeX-file. Er wordt een bijschrift gemaakt dat toelichting geeft bij de verschillende elementen op de figuur en een vewijzing in de tekst geschreven naar deze figuur.
+		\item Het invoegen van de figuur, gebeurt in een \LaTeX-file. Er wordt een bijschrift gemaakt dat toelichting geeft bij de verschillende elementen op de figuur en een verwijzing in de tekst geschreven naar deze figuur.
 		\item Tijdens het werken worden beide bestanden afwisselend aangepast: de figuur wordt verbeterd, daarna wordt het bijschrift aangepast, vervolgens wordt opnieuw aan de figuur gewerkt, enzovoort.
 		\item Deze aanpassingen kunnen dan in twee commits worden doorgevoerd in de repository: één voor alles wat met het Python-notebook gebeurt en een tweede voor de aanvullingen in het verslag.
 	\end{itemize}
 
 	Hiervoor gebruikt \git\ de stage, wat leidt tot de volgende meer geavanceerde workflow Save -- Stage -- Commit. In het vervolg van deze tekst zullen we steeds alle aanpassingen tegelijk stagen, klik in de pop-up dus steeds op \texttt{Yes}, of eenmalig op \texttt{Always}.
 
-		\subsection{Terminologie} Hiermee zijn alvast drie belangrijke begrippen geïntroduceerd:
+		\subsection{Terminologie} Hiermee zijn alvast vier belangrijke begrippen geïntroduceerd:
 		\begin{itemize}
 			\item \emph{Werkmap}: de lokale map waarin de bestanden van het project staan.
 			\item \emph{Stage}: selectie van wijzigingen die in de volgende commit zullen terechtkomen.
@@ -275,7 +275,7 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 		\end{itemize}
 		\item Kies voor \texttt{Create New Branch}, typ de naam ``\texttt{hobbies}'' in het tekstveld en druk op \texttt{Enter}.
 		\item Door opnieuw links onderaan op de branchnaam te klikken, kan je snel wisselen tussen \texttt{hobbies} en \texttt{main}. Verifieer dat beide branches momenteel nog identiek zijn.
-		\item Verifieer dat de nieuwe branch \texttt{hobbies} momenteel enkel lokaal bestaat en nog niet te zien op \github.
+		\item Verifieer dat de nieuwe branch \texttt{hobbies} momenteel enkel lokaal bestaat en nog niet te zien is op \github.
 	\end{itemize}
 	
 	\subsection{Een wijziging maken op de nieuwe branch, local repository} We zullen nu een wijziging maken op de branch \texttt{hobbies}.
@@ -287,7 +287,7 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 		\item Standaard worden in \texttt{Graph} enkel de commits van de huidige branch getoond. Klik naast \texttt{Graph} op het \texttt{Source Control}-icoontje, selecteer \texttt{All} en klik op OK.
 		\item Schakel heen en weer tussen beide branches door op de branchnaam in de statusbalk te klikken.
 		\begin{itemize}
-			\item Het nieuwe bestand is enkel zichtbaar is in de branch \texttt{hobbies}.
+			\item Het nieuwe bestand is enkel zichtbaar in de branch \texttt{hobbies}.
 			\item De \texttt{Graph} toont de geschiedenis van de verschillende branches met verschillende kleuren. Labels en icoontjes geven aan waar elke branch zich momenteel bevindt. Het wolkje geeft de meest recente bekende versie van de (\texttt{main}-)branch op \github\ aan.
 			\item De inhoud van de werkmap in het venster \texttt{Explorer} en ook in het besturingssysteem zelf, verandert naargelang in \vscode\ een andere branch wordt geselecteerd.
 			\item De geschiedenis van commits, branches en andere repositorygegevens wordt bewaard in de verborgen submap \texttt{.git}.
@@ -297,7 +297,7 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 	\subsection{Een nieuwe branch op de \github-repository} Nu maken we een nieuwe branch op \github\ aan en voegen er ook een extra bestand aan toe.
 	
 	\begin{itemize}
-		\item Open de repository in \github\, naast de branch-naam \texttt{main} staat de tekst ``1 Branch''. Klik hierop en daarna op \texttt{New Branch}. Geef de branch de naam ``\texttt{vakken}''. In het veld \texttt{Source branch} kan je kies je een branch op te kopiëren (momenteel is enkel \texttt{main} beschikbaar).
+		\item Open de repository in \github, naast de branch-naam \texttt{main} staat de tekst ``1 Branch''. Klik hierop en daarna op \texttt{New Branch}. Geef de branch de naam ``\texttt{vakken}''. In het veld \texttt{Source branch} kies je een branch om te kopiëren (momenteel is enkel \texttt{main} beschikbaar).
 		\item Klik op de branch \texttt{vakken}, \texttt{Add file}, \texttt{Create new file}.
 		\item Geef het nieuwe bestand de naam \texttt{vakken.txt} en zet er de vakken in die je dit semester volgt.
 		\item Commit de wijziging op \github.
@@ -468,7 +468,7 @@ Om toch aan zo'n repository te kunnen bijdragen, gebruikt GitHub zogenaamde \emp
     \begin{itemize}
         \item In je eigen account verschijnt nu de nieuwe repository. Interessant om weten: forks van publieke repositories blijven automatisch publiek.
         \item Alle bestanden, branches en commits werden gekopieerd.
-		\item De nieuwe repository, de \emph{fork}, blijft verwijzen naar de bron, de zogenaamde \emph{upstream repository}, al kan je zelf geen merg uitvoeren naar deze bron.
+		\item De nieuwe repository, de \emph{fork}, blijft verwijzen naar de bron, de zogenaamde \emph{upstream repository}, al kan je zelf geen \emph{merge} uitvoeren naar deze bron.
 		\item Net zoals bij een branch kunnen wijzigingen via een \emph{pull request} worden voorgesteld aan de upstream repository.
 		\item Verschijnen er nieuwe commits in de upstream repository, dan kunnen die worden overgenomen door in \github\ te klikken op \texttt{Sync fork}, \texttt{Update branch}.
     \end{itemize}
