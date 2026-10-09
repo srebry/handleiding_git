@@ -57,7 +57,7 @@
 	\item Ga naar de webpagina \href{https://github.com/}{\texttt{github.com}} om een account te maken.
 	\item Vul je KU Leuven-e-mailadres in en klik op \texttt{Sign up for GitHub}.
 	\item Kies een veilig paswoord, hergebruik geen paswoorden.
-	\item Kies als username hetzelfde als je e-mailadres, maar zonder symbolen \texttt{.} of \texttt{\@} maar inclusief het eventuele cijfer \texttt{1} of \texttt{2} achter je naam. Laat het laatste gedeelte weg als dat de maximale lengte van een username overschrijdt (39 karakters)\footnote{Dit is misschien overkill... hoe?}. Dit is belangrijk opdat we jullie accounts automatisch zouden kunnen terugvinden.
+	\item Kies als username hetzelfde als je e-mailadres, maar zonder symbolen \texttt{.} of \texttt{@} maar inclusief het eventuele cijfer \texttt{1} of \texttt{2} achter je naam. Laat het laatste gedeelte weg als dat de maximale lengte van een username overschrijdt (39 karakters)\footnote{Dit is misschien overkill... hoe?}. Dit is belangrijk opdat we jullie accounts automatisch zouden kunnen terugvinden.
 	\item Klik op \texttt{Create account}.
 	\item Je krijgt een e-mail met een beveiligingscode die je moet invullen op de volgende pagina. Daarna is je account actief.
 	\end{itemize}
@@ -98,7 +98,7 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 	
 	\subsection{Lokale map openen in \vscode} Een project bestaat typisch niet uit één bestand, maar uit heel wat bestanden die worden verzameld in een map. We openen in \vscode\ de lokale map die net is gemaakt.
 	\begin{itemize}
-		\item Zorg ervoor dat er geen andere bestanden open staan in \vscode: \texttt{file}, \texttt{Close Folder}.
+		\item Als je al andere bestanden hebt geopend in \vscode, open dan een nieuw venster, \texttt{File}, \texttt{New Window} (\texttt{ctrl+shift+N}).
 		\item Open de map \texttt{C:\textbackslash Projecten\textbackslash gittest} in \vscode\ via \texttt{File}, \texttt{Open Folder}.
 		\item Maak meteen een nieuw tekstbestand aan (\texttt{ctrl+N}): \texttt{File}, \texttt{New Text File}. Typ hierin enkel je naam (lijn 1) en opleiding (lijn 2).
 		\item Sla dit bestand op (\texttt{ctrl+S}): \texttt{File}, \texttt{Save} met als naam ``\texttt{gegevens.txt}''.
@@ -108,12 +108,12 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 	Op dit moment is de werkmap een gewone bestandsmap zonder versiecontrole. Om die te activeren, maken we er een \git-repository van.
 	\begin{itemize}
 		\item Klik in \vscode\ op het icoon \texttt{Source Control} (links in de knoppenbalk, \texttt{ctrl+shift+G}).
-		\item Klik op \texttt{Manage Workspace Trust} en daarna op \\texttt{Trust}.
+		\item Klik op \texttt{Manage Workspace Trust} en daarna op \texttt{Trust}, sluit het venster.
 		\begin{itemize}
 			\item \texttt{Trust}: \vscode\ beschouwt de map als veilig en schakelt alle functionaliteit in, waaronder \git-integratie, extensies en het uitvoeren van code.
 			\item \texttt{Don't Trust}: \vscode\ opent de map in \texttt{Restricted Mode}. Bestanden kunnen nog worden bekeken en aangepast, maar bepaalde functionaliteit wordt uit veiligheidsoverwegingen uitgeschakeld.
 		\end{itemize}
-		\item Klik op \texttt{Initialize Repository} en  \texttt{Yes} om de repository te initialiseren.
+		\item Klik op \texttt{Initialize Repository} van de werkmap een repository te maken.
 		\begin{itemize}
 			\item Je ziet dat het bestand \texttt{gegevens.txt} wordt vermeld onder \texttt{Changes}. Onderaan in de zijbalk is de \texttt{Graph} nog leeg, hier verschijnt later de inhoud van de repository.
 		\end{itemize}
@@ -121,10 +121,11 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 	
 	\subsection{Eerste commit} Nu kunnen we een toevoegen van het eerste bestand aan de repository doorvoeren. 
 	\begin{itemize}
-		\item Tik in het vak \texttt{Message} onder \texttt{Changes} een beschrijving van de aanpassingen, in dit geval bijvoorbeeld ``Initiële inhoud''.
+		\item Tik in het vak \texttt{Message} (onder \texttt{Changes} en boven de \texttt{Commit}-knop) een beschrijving van de aanpassingen, in dit geval bijvoorbeeld ``Initiële inhoud''.
 		\item Klik op \texttt{Commit}. Een pop-up vraagt ``stage all changes and commit?'', kies voor \texttt{Yes}. De rol van stage komt aan bod in sectie \ref{ssec:stage}.
+		\item Klik op \texttt{Initiële inhoud} onder \texttt{Graph}.
 		\begin{itemize}
-			\item De \texttt{gegevens.txt} verschijnt in het \texttt{Graph}-overzicht, onder de beschrijving van de commit, met daarnaast de letter \texttt{A} (added file).
+			\item De \texttt{gegevens.txt} verschijnt met daarnaast de letter \texttt{A} (added file).
 		\end{itemize}
 	\end{itemize}
 	
@@ -138,7 +139,7 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 			\item Klik op \texttt{gegevens.txt} onder \texttt{Graph}. Een nieuw venster opent in de editor met daarin de versie van het bestand zoals die is opgeslagen in de meest recente commit van de repository. Deze bevat nog maar twee lijnen.
 		\end{itemize}
 		\git\ bewaart dus zowel de huidige bestanden in je werkmap als eerdere versies in de repository.
-		\item Typ opnieuw een beschrijving van de aanpassingen in het vak \texttt{Message} onder \texttt{Changes}, bijvoorbeeld ``Woonplaats toegevoegd'' en klik op \texttt{Commit}. 
+		\item Typ opnieuw een beschrijving van de aanpassingen in het vak \texttt{Message} onder \texttt{Changes}, bijvoorbeeld ``Woonplaats toegevoegd'', klik op \texttt{Commit}, klik op \texttt{Yes} in de pop-up. 
 		\begin{itemize}
 			\item De \texttt{Graph} toont nu twee commits, met de meest recente bovenaan en telkens met het bestand \texttt{gegevens.txt}. Door er op te klikken kan je de versies vergelijken.
 			\item Naast de meest recente commit staat de letter \texttt{M} (modified file).
@@ -148,15 +149,15 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 	
 	\subsection{Bestanden toevoegen en verwijderen} Nu zullen we nieuwe bestanden toevoegen en een bestaand bestand verwijderen.
 	\begin{itemize}
-		\item Maak twee nieuwe bestanden (\texttt{ctrl+N}) met als namen \texttt{brol.txt} (willekeurige inhoud) en \texttt{steden.txt} (bevat vier lijnen met daarop respectievelijk \texttt{Brugge}, \texttt{Kortrijk}, \texttt{Leuven} en \texttt{Poelkapelle}). Sla deze bestanden op (\texttt{ctrl+S}) en voer een commit uit.
+		\item Maak twee nieuwe bestanden (\texttt{ctrl+N}) met als namen \texttt{brol.txt} (willekeurige inhoud) en \texttt{steden.txt} (bevat vier lijnen met daarop respectievelijk \texttt{Brugge}, \texttt{Kortrijk}, \texttt{Leuven} en \texttt{Poelkapelle}). Sla deze bestanden op (\texttt{ctrl+S}) en voer een commit uit, klik op \texttt{Yes} in de pop-up.
 		\begin{itemize}
 			\item In de \texttt{Graph} staan inmiddels drie commits, met daarbij telkens enkel de bestanden die in die commit zijn toegevoegd (\texttt{A}) of aangepast (\texttt{M}).
 		\end{itemize}
-		\item Verwijder via \texttt{Explorer} (\texttt{ctrl+shift+E}) het bestand \texttt{brol.txt} uit de map (selecteren + \texttt{Delete}).
-		\item Schrap het gehucht \texttt{Poelkapelle} uit de opsomming in \texttt{steden.txt} en commit de verwijderingen.
+		\item Verwijder via \texttt{Explorer} (\texttt{ctrl+shift+E}) het bestand \texttt{brol.txt} uit de map (selecteren + \texttt{Delete}), bevestig met \texttt{Move to recycle bin}.
+		\item Schrap het gehucht \texttt{Poelkapelle} uit de opsomming in \texttt{steden.txt}, sla het bestand op en commit de verwijderingen, klik op \texttt{Yes} in de pop-up.
 		\begin{itemize}
 			\item In \texttt{Source Control} wordt het bestand \texttt{brol.txt} gemarkeerd met de letter \texttt{D} (deleted file).
-			\item De geschrapte lijn staat rood gemarkeerd en zonder lijnnummer in het bestand \texttt{bestanden.txt} onder de recentste commit in de \texttt{Graph}.
+			\item De geschrapte lijn staat rood gemarkeerd in het bestand \texttt{bestanden.txt} onder de recentste commit in de \texttt{Graph}.
 		\end{itemize}
 	\end{itemize}
 	Ook al is de informatie uit de map of uit een bestand verwijderd (zie \texttt{Explorer}), toch verdwijnt er geen informatie uit repository (zie \texttt{Source Control}).
@@ -171,7 +172,7 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 		\item Deze aanpassingen kunnen dan in twee commits worden doorgevoerd in de repository: één voor alles wat met het Python-notebook gebeurt en een tweede voor de aanvullingen in het verslag.
 	\end{itemize}
 
-	Hiervoor gebruikt \git\ de stage, wat leidt tot de volgende meer geavanceerde workflow Save -- Stage -- Commit.
+	Hiervoor gebruikt \git\ de stage, wat leidt tot de volgende meer geavanceerde workflow Save -- Stage -- Commit. In het vervolg van deze tekst zullen we steeds alle aanpassingen tegelijk stagen, klik in de pop-up dus steeds op \texttt{Yes}, of eenmalig op \texttt{Always}.
 
 		\subsection{Terminologie} Hiermee zijn alvast drie belangrijke begrippen geïntroduceerd:
 		\begin{itemize}
@@ -189,7 +190,8 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 	\subsection{Repository publiceren vanuit \vscode} De lokale repository \texttt{gittest} zullen we nu publiceren op \github.
 	\begin{itemize}
 		\item Klik in \texttt{Source Control} op \texttt{Publish Branch}. Deze knop staat er enkel als er geen hangende aanpassingen meer zijn die op een commit wachten.
-		\item Kies \texttt{Publish to github Private Repository}.
+		\item Vervolg het proces om in te loggen met de account die gelinkt is aan je KU Leuven-e-mailadres.
+		\item Kies \texttt{Publish to github Private Repository}..
 		\begin{itemize}
 		\item Een private repository is enkel zichtbaar voor de eigenaar en voor personen die expliciet toegang krijgen.
 		\item Een public repository is zichtbaar voor iedereen.
@@ -199,21 +201,22 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 	\end{itemize}
 	
 	\subsection{Repository bekijken op \github}
-	Na enkele seconden verschijnt de repository ook op \github. \begin{itemize}
-		\item In de browser, klik op \texttt{Repositories} op je \github-pagina en daarna op de naam van de repository \texttt{gittest}.
+	Na enkele seconden verschijnt de repository ook in de browser op de \github-website.
+	\begin{itemize}
+		\item In de browser op je \github-pagina klik je door naar de repository \texttt{gittest}.
 		\item Verifieer dat de bestanden \texttt{gegevens.txt} en \texttt{steden.txt} zichtbaar zijn, met inhoud volgens de recentste commit.
 	\end{itemize}
 	Op dit moment bevat \github\ dus dezelfde commits als de lokale repository.
 	
 	\subsection{Lokale wijzigingen maken}
-	We zullen nu een nieuwe wijziging lokaal maken.
+	We zullen nu een nieuwe wijziging maken aan de lokale repository, in \vscode.
 	\begin{itemize}
 		\item Voeg aan \texttt{gegevens.txt} een vierde lijn toe met je favoriete kleur en sla het bestand op (\texttt{Ctrl+S}).
 		\item Klik op \texttt{Commit}, verifieer de wijzigingen in \texttt{explorer} en vernieuw het bestand \texttt{gegevens.txt} op \github\ (\texttt{F5}).
 		\begin{itemize}
 			\item Zoals verwacht is het lokale bestand aangepast.
 			\item De favoriete kleur is echter nog niet zichtbaar op \github.
-			\item In \texttt{Source Control} staat de laatste commit in een andere kleur dan de voorgaande commits. Twee icoontjes geven aan welke de actieve lokale commit is, en welke de recentste commit is die op \github\ staat.
+			\item In \texttt{Source Control} staat de laatste commit in een andere kleur dan de voorgaande commits. Twee icoontjes (concentrische cirkels en een wolkje) geven aan welke de actieve lokale commit is, en welke de recentste commit is die op \github\ staat.
 		\end{itemize}
 	\end{itemize}
 	De commit is lokaal opgeslagen, maar nog niet naar \github\ gestuurd.
@@ -291,7 +294,7 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 		\end{itemize}
 	\end{itemize}
 	
-	\subsection{Een nieuwe brach op de \github-repository} Nu maken we een nieuwe branch op \github\ aan en voegen er ook een extra bestand aan toe.
+	\subsection{Een nieuwe branch op de \github-repository} Nu maken we een nieuwe branch op \github\ aan en voegen er ook een extra bestand aan toe.
 	
 	\begin{itemize}
 		\item Open de repository in \github\, naast de branch-naam \texttt{main} staat de tekst ``1 Branch''. Klik hierop en daarna op \texttt{New Branch}. Geef de branch de naam ``\texttt{vakken}''. In het veld \texttt{Source branch} kan je kies je een branch op te kopiëren (momenteel is enkel \texttt{main} beschikbaar).
