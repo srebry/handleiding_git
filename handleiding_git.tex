@@ -3,7 +3,7 @@
 \usepackage[dutch]{babel}
 \graphicspath{{afbeeldingen/}}
 
-\newcommand{\vscode}{\includegraphics[width=1.5ex]{vscode}\texttt{VS}\hspace{.1ex}\texttt{Code}}
+\newcommand{\vscode}{\includegraphics[width=1.5ex]{vscode}\texttt{VS}\hspace{.5ex}\texttt{Code}}
 \newcommand{\git}{\includegraphics[width=1.5ex]{git}\texttt{Git}}
 \newcommand{\github}{\includegraphics[width=1.5ex]{github}\texttt{GitHub}}
 
@@ -22,17 +22,17 @@
 	
 	\section*{Inleiding}
 	
-	Het programma \git\ en de webinterface \github\ zijn hulpmiddelen om versies van bestanden bij te houden en met meerdere personen samen te werken aan een project. Oorspronkelijk werden ze ontwikkeld voor softwareontwikkeling, maar ondertussen worden ze ook gebruikt voor verslagen, onderzoeksprojecten, websites, presentaties, data-analyse en vele andere toepassingen waarbij meerdere versies van bestanden ontstaan.
+	Het lokale programma \git\ en het online platform \github\ zijn hulpmiddelen om versies van bestanden bij te houden en met meerdere personen samen te werken aan een project. Oorspronkelijk werden ze ontwikkeld voor softwareontwikkeling, maar ondertussen worden ze ook gebruikt voor verslagen, onderzoeksprojecten, websites, presentaties, data-analyse en vele andere toepassingen waarbij meerdere versies van bestanden ontstaan.
 	
 	De basisidee is eenvoudig. In plaats van telkens bestanden op te slaan onder een andere naam zoals \texttt{versie1}, \texttt{versie2} of \texttt{eindversie\_definitief\_echt\_definitief}, bewaart \git\ een gedocumenteerde geschiedenis van alle wijzigingen. Op elk moment kan worden nagegaan wie een wijziging heeft uitgevoerd, wanneer die wijziging gebeurde en hoe een eerdere versie van een bestand eruitzag.
 	
 	\git\ bestaat essentieel uit honderden tekstcommando's die via de commandoregel kunnen worden uitgevoerd en biedt talloze geavanceerde mogelijkheden voor versiebeheer, samenwerking, testen en automatisering. In de praktijk werken veel gebruikers niet rechtstreeks met deze commando's, maar via een grafische gebruikersinterface die de meest gebruikte \git-functies toegankelijk maakt met knoppen, menu's en overzichtsvensters.
 	
-	\github\ is een online platform dat \git-repositories kan bewaren en delen. Het voegt bovendien extra functionaliteit toe voor samenwerking, zoals issues, taakverdeling en projectbeheer. \github\ zelf vervangt \git\ niet, maar bouwt er bovenop voort.
+	\github\ is een online platform dat \git-repositories kan bewaren en delen. Het voegt bovendien extra functionaliteit toe voor samenwerking, zoals issues, taakverdeling en projectbeheer. \github\ zelf vervangt \git\ niet, maar bouwt er bovenop voort. Er zijn nog andere manieren om \github\ aan te sturen, maar deze handleiding gebruikt de webinterface.
 	
 	\git\ kan vanuit verschillende programma's worden gebruikt. In deze handleiding kiezen we voor één werkwijze: \git\ aansturen vanuit Visual Studio Code (\vscode). Waar mogelijk gebruiken we de grafische interface van \vscode\ en \github. Slechts af en toe zullen we een opdracht uit het \texttt{Command Palette} gebruiken. Daardoor kunnen we ons concentreren op de onderliggende ideeën zonder eerst een lange lijst \git-commando's te moeten leren.
 	
-	Na het doorlopen van de installatie-intructies, starten we met introduceren van versiebeheer op de eigen lokale computer (local repository, commit -- sectie \ref{sec:local}), om die gegevens vervolgens te publiceren op \github\ (remote repository, push, pull -- sectie \ref{sec:remote}). Daarna onderzoeken we hoe verschillende versies van hetzelfde project naast elkaar kunnen bestaan (branches, fetch -- sectie \ref{sec:branches}) en hoe deze versies daarna opnieuw kunnen worden gecombineerd (\emph{merge} -- sectie \ref{sec:merge}). In een groter project waar meerderen samenwerken, is het belangrijk het overzicht te bewaren van wat er nog te gebeuren staat en wie wat doet (\emph{issues}, \emph{assignees} -- sectie \ref{sec:issues}). Ten slotte passen we deze workflow toe op de teamopdracht van het vak (sectie \ref{sec:teamopdracht}).
+	Na het doorlopen van de installatie-instructies, starten we met het introduceren van versiebeheer op de eigen lokale computer (local repository, commit -- sectie \ref{sec:local}), om die gegevens vervolgens te publiceren op \github\ (remote repository, push, pull -- sectie \ref{sec:remote}). Daarna onderzoeken we hoe verschillende versies van hetzelfde project naast elkaar kunnen bestaan (branches, fetch -- sectie \ref{sec:branches}) en hoe deze versies daarna opnieuw kunnen worden gecombineerd (\emph{merge} -- sectie \ref{sec:merge}). In een groter project waar meerderen samenwerken, is het belangrijk het overzicht te bewaren van wat er nog te gebeuren staat en wie wat doet (\emph{issues}, \emph{assignees} -- sectie \ref{sec:issues}). Ten slotte passen we deze workflow toe op de teamopdracht van het vak (sectie \ref{sec:teamopdracht}).
 	
 	Na het doorwerken van deze handleiding beheers je de basisworkflow die ook in professionele software- en onderzoeksprojecten wordt gebruikt, om de bijdragen van verschillende personen gecontroleerd samen te voegen.
 
@@ -53,7 +53,7 @@
 	\item Klik op \texttt{Install}.
 	\end{itemize}
 
-	\subsection{\github\ account maken}
+	\subsection{\github-account maken}
 	\begin{itemize}
 	\item Ga naar de webpagina \href{https://github.com/}{\texttt{github.com}} om een account te maken.
 	\item Vul je KU Leuven-e-mailadres in en klik op \texttt{Sign up for GitHub}.
@@ -62,7 +62,7 @@
 	\item Je krijgt een e-mail met een beveiligingscode die je moet invullen op de volgende pagina. Daarna is je account actief.
 	\end{itemize}
 
-	\subsection{Account koppelen aan \github-Education}
+	\subsection{Account koppelen aan \github\ Education}
 
 	\begin{itemize}
 	\item Log in op \github.
@@ -108,7 +108,7 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 		\item Sla dit bestand op (\texttt{ctrl+S}): \texttt{File}, \texttt{Save} met als naam ``\texttt{gegevens.txt}''.
 	\end{itemize}
 	
-	\subsection{Lokaal repository initialiseren} 
+	\subsection{Lokale repository initialiseren} 
 	Op dit moment is de werkmap een gewone bestandsmap zonder versiecontrole. Om die te activeren, maken we er een \git-repository van.
 	\begin{itemize}
 		\item Klik in \vscode\ op het icoon \texttt{Source Control} (derde icoon links in de activiteitenbalk, zie \ref{fig:vscode}, \texttt{ctrl+shift+G}).
@@ -117,13 +117,13 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 			\item \texttt{Trust}: \vscode\ beschouwt de map als veilig en schakelt alle functionaliteit in, waaronder \git-integratie, extensies en het uitvoeren van code.
 			\item \texttt{Don't Trust}: \vscode\ opent de map in \texttt{Restricted Mode}. Bestanden kunnen nog worden bekeken en aangepast, maar bepaalde functionaliteit wordt uit veiligheidsoverwegingen uitgeschakeld.
 		\end{itemize}
-		\item Klik op \texttt{Initialize Repository} van de werkmap een repository te maken.
+		\item Klik op \texttt{Initialize Repository} om van de werkmap een repository te maken.
 		\begin{itemize}
 			\item Je ziet dat het bestand \texttt{gegevens.txt} wordt vermeld onder \texttt{Changes}. Onderaan in de zijbalk is de \texttt{Graph} nog leeg, hier verschijnt later de inhoud van de repository.
 		\end{itemize}
 	\end{itemize}
 	
-	\subsection{Eerste commit} Nu kunnen we een toevoegen van het eerste bestand aan de repository doorvoeren, een eerste checkpoint waarnaar we later kunnen terugkeren. 
+	\subsection{Eerste commit} Nu kunnen we het eerste bestand met een commit in de versiegeschiedenis opnemen. 
 	\begin{itemize}
 		\item Tik in het vak \texttt{Message} (onder \texttt{Changes} en boven de \texttt{Commit}-knop) een beschrijving van de aanpassingen, in dit geval bijvoorbeeld ``Initiële inhoud''.
 		\begin{itemize}
@@ -133,7 +133,7 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 		\item Klik op \texttt{Commit}. Een pop-up vraagt ``stage all changes and commit?'', kies voor \texttt{Yes}. De rol van stage komt aan bod in sectie \ref{ssec:stage}.
 		\item Klik op \texttt{Initiële inhoud} onder \texttt{Graph}.
 		\begin{itemize}
-			\item De \texttt{gegevens.txt} verschijnt met daarnaast de letter \texttt{A} (added file).
+			\item Het bestand \texttt{gegevens.txt} verschijnt met daarnaast de letter \texttt{A} (added file).
 		\end{itemize}
 	\end{itemize}
 	
@@ -149,8 +149,8 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 		\git\ bewaart dus zowel de huidige bestanden in je werkmap als eerdere versies in de repository.
 		\item Typ opnieuw een beschrijving van de aanpassingen in het vak \texttt{Message} onder \texttt{Changes}, bijvoorbeeld ``Woonplaats toegevoegd'', klik op \texttt{Commit}, klik op \texttt{Yes} in de pop-up. 
 		\begin{itemize}
-			\item De \texttt{Graph} toont nu twee commits, met de meest recente bovenaan en telkens met het bestand \texttt{gegevens.txt}. Door er op te klikken kan je de versies vergelijken.
-			\item Naast de meest recente commit staat de letter \texttt{M} (modified file).
+			\item De \texttt{Graph} toont nu twee commits, met de meest recente bovenaan en telkens met het bestand \texttt{gegevens.txt}. Door erop te klikken kan je de versies vergelijken.
+			\item Naast het bestand in de meest recente commit staat de letter \texttt{M} (modified file).
 		\end{itemize}
 		Met een commit leg je een versie van je project permanent vast in de repository, de message laat toe om later gericht een bepaalde versie terug te vinden. De repository bevat dus alle versies van je project, ook al zijn bestanden aangepast of zelfs verwijderd uit de werkmap.
 	\end{itemize}
@@ -164,18 +164,18 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 		\item Verwijder via de \texttt{Explorer} in \vscode\ (\texttt{ctrl+shift+E}, bovenste knop in de activiteitenbalk, zie figuur \ref{fig:vscode}) het bestand \texttt{brol.txt} uit de map (selecteren + \texttt{Delete}), bevestig met \texttt{Move to recycle bin}.
 		\item Schrap het gehucht \texttt{Poelkapelle} uit de opsomming in \texttt{steden.txt}, sla het bestand op en commit de verwijderingen, klik op \texttt{Yes} in de pop-up.
 		\begin{itemize}
-			\item In \texttt{Source Control} wordt het bestand \texttt{brol.txt} gemarkeerd met de letter \texttt{D} (deleted file).
-			\item De geschrapte lijn staat rood gemarkeerd in het bestand \texttt{bestanden.txt} onder de recentste commit in de \texttt{Graph}.
+			\item In \texttt{Source Control}, \texttt{Graph} wordt het bestand \texttt{brol.txt} gemarkeerd met de letter \texttt{D} (deleted file).
+			\item Het bestand \texttt{steden.txt} staat onder de recentste commit in de \texttt{Graph} gemarkeerd met de letter \texttt{M} (modified file). Openen hiervan in de editor toont de geschrapte lijn in het rood gemarkeerd.
 		\end{itemize}
 	\end{itemize}
-	Ook al is de informatie uit de map of uit een bestand verwijderd (zie \texttt{Explorer}), toch verdwijnt er geen informatie uit repository (zie \texttt{Source Control}).
+	Ook al is de informatie uit de map of uit een bestand verwijderd (zie \texttt{Explorer}), toch verdwijnt er geen informatie uit de repository (zie \texttt{Source Control}).
 	
 	\subsection{Stage -- selecteren van aanpassingen voor commit}
 	\label{ssec:stage}
 	Hierboven werd een stap overgeslagen bij het committen. In een realistische workflow komt tussen opslaan en committen van aanpassingen nog het stagen. Niet alle wijzigingen die tegelijk in de werkmap aanwezig zijn, horen immers noodzakelijk in dezelfde commit thuis. Bekijk volgend voorbeeld: bij het schrijven van het eindverslag wordt een figuur gemaakt en geïnterpreteerd in de tekst.
 	\begin{itemize}
 		\item Het maken van de figuur, verzorgen van de assen en de legende gebeurt in een \texttt{Python}-notebook waar alle geschreven code wordt getest en geïllustreerd.
-		\item Het invoegen van de figuur, gebeurt in een \LaTeX-file. Er wordt een bijschrift gemaakt dat toelichting geeft bij de verschillende elementen op de figuur en een verwijzing in de tekst geschreven naar deze figuur.
+		\item Het invoegen van de figuur gebeurt in een \LaTeX-file. Er wordt een bijschrift gemaakt dat toelichting geeft bij de verschillende elementen op de figuur en een verwijzing in de tekst geschreven naar deze figuur.
 		\item Tijdens het werken worden beide bestanden afwisselend aangepast: de figuur wordt verbeterd, daarna wordt het bijschrift aangepast, vervolgens wordt opnieuw aan de figuur gewerkt, enzovoort.
 		\item Deze aanpassingen kunnen dan in twee commits worden doorgevoerd in de repository: één voor alles wat met het Python-notebook gebeurt en een tweede voor de aanvullingen in het verslag.
 	\end{itemize}
@@ -187,7 +187,7 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 			\item \emph{Werkmap}: de lokale map waarin de bestanden van het project staan.
 			\item \emph{Stage}: selectie van wijzigingen die in de volgende commit zullen terechtkomen.
 			\item \emph{Commit}: een opgeslagen versie van de werkmap op één bepaald moment.
-			\item \emph{Repository}: het geheel van alle commits en dus alle aanpassingen en versies van elk bestanden.
+			\item \emph{Repository}: het geheel van alle commits en dus alle aanpassingen en versies van elk bestand.
 		\end{itemize}
 
 	\section{Repository publiceren op \github}
@@ -199,13 +199,16 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 	\begin{itemize}
 		\item Klik in \texttt{Source Control} op \texttt{Publish Branch}. Deze knop staat er enkel als er geen hangende aanpassingen meer zijn die op een commit wachten.
 		\item Vervolg het proces om in te loggen met de account die gelinkt is aan je KU Leuven-e-mailadres.
-		\item Kies \texttt{Publish to github Private Repository}..
+		\item Kies \texttt{Publish to github Private Repository}.
 		\begin{itemize}
 		\item Een private repository is enkel zichtbaar voor de eigenaar en voor personen die expliciet toegang krijgen.
 		\item Een public repository is zichtbaar voor iedereen.
 		\end{itemize}
 		\item Meld eventueel aan met je \github-account.
 		\item Bevestig de publicatie.
+		\begin{itemize}
+		\item Als \vscode\ vraagt om regelmatig \texttt{git fetch} uit te voeren, klik je op \texttt{No}. Wat dit precies doet, komt later aan bod (sectie \ref{ssec:fetch}).
+		\end{itemize}
 	\end{itemize}
 	
 	\subsection{Repository bekijken op \github}
@@ -232,6 +235,9 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 	\subsection{Push uitvoeren} Om de nieuwe commit naar \github\ te sturen, gebruiken we een \emph{push}.
 	\begin{itemize}
 		\item Klik in \texttt{Source Control} op \texttt{Sync Changes}.
+		\begin{itemize}
+		\item Strikt genomen voert de knop \texttt{Sync Changes} niet enkel een push uit, maar ook eerst een \texttt{Pull}. Wat dat precies is, komt later aan bod (sectie \ref{ssec:pull}).
+		\end{itemize}
 		\item Vernieuw de \github-webpagina (\texttt{F5}) en verifieer dat de kleur nu wel zichtbaar is in \texttt{gegevens.txt}.
 	\end{itemize}
 	
@@ -242,7 +248,7 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 		\item Ga na of de hobby in \vscode\ zichtbaar is. Dat blijkt nog niet het geval te zijn.
 	\end{itemize}
 	
-	\subsection{Pull uitvoeren} 
+	\subsection{Pull uitvoeren}\label{ssec:pull}
 	\github\ bevat nu een recentere versie dan de lokale repository, om de wijzigingen van \github\ naar de eigen computer te halen, gebruiken we een \emph{pull}.
 	\begin{itemize}
 		\item Ga naar \texttt{Source Control} (\texttt{ctrl+shift+G}).
@@ -290,7 +296,7 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 	
 	\begin{itemize}
 		\item Selecteer de branch \texttt{hobbies} en maak daarin een nieuw bestand \texttt{hobbies.txt}.
-		\item Zet in het bestand een overzicht van je hobbies.
+		\item Zet in het bestand een overzicht van je hobby's.
 		\item Voer een \texttt{Commit} uit.
 		\item Standaard worden in \texttt{Graph} enkel de commits van de huidige branch getoond. Klik naast \texttt{Graph} op het \texttt{Source Control}-icoontje, selecteer \texttt{All} en klik op OK.
 		\item Schakel heen en weer tussen beide branches door op de branchnaam in de statusbalk te klikken.
@@ -305,7 +311,7 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 	\subsection{Een nieuwe branch op de \github-repository} Nu maken we een nieuwe branch op \github\ aan en voegen er ook een extra bestand aan toe.
 	
 	\begin{itemize}
-		\item Open de repository in \github door op \texttt{gittest} te klikken. Naast de branch-naam \texttt{main} staat de tekst ``1 Branch''. Klik hierop en daarna op \texttt{New Branch}. Geef de branch de naam ``\texttt{vakken}''. In het veld \texttt{Source branch} kies je een branch om te kopiëren (momenteel is enkel \texttt{main} beschikbaar).
+		\item Open de repository in \github\ door op \texttt{gittest} te klikken. Naast de branchnaam \texttt{main} staat de tekst ``1 Branch''. Klik hierop en daarna op \texttt{New Branch}. Geef de branch de naam ``\texttt{vakken}''. In het veld \texttt{Source branch} kies je een branch om te kopiëren (momenteel is enkel \texttt{main} beschikbaar).
 		\item Klik op de branch \texttt{vakken}, \texttt{Add file}, \texttt{Create new file}.
 		\item Geef het nieuwe bestand de naam \texttt{vakken.txt} en zet er de vakken in die je dit semester volgt.
 		\item Commit de wijziging op \github.
@@ -318,20 +324,20 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 	
 	In wat volgt, proberen we alle branches samen te brengen. Dit kan uiteraard uitsluitend in \vscode, want \github\ heeft geen toegang tot je lokale systeem.
 	
-	\subsection{Fetch -- online informatie ophalen} 
+	\subsection{Fetch -- online informatie ophalen} \label{ssec:fetch}
 	\vscode\ gaat niet continu na of er online aanpassingen aan de repository zijn gemaakt. Door het commando \texttt{Fetch} uit te voeren gebeurt dat wel.
 	\begin{itemize}
-		\item Klik op de branch-naam in \vscode, links onderaan in de statusbalk. In het lijstje bekende branches staan de lokale branches (\texttt{main} en \texttt{hobbies}) en de enige gekende remote branch (\texttt{origin/main}).
+		\item Klik op de branchnaam in \vscode, links onderaan in de statusbalk. In het lijstje bekende branches staan de lokale branches (\texttt{main} en \texttt{hobbies}) en de enige gekende remote branch (\texttt{origin/main}).
 		\item Klik op \texttt{Fetch From All Remotes} naast \texttt{Graph}. Hierdoor gaat \git\ na wat er online is veranderd. Er worden op dit moment nog geen bestanden aangepast.
 		\begin{itemize}
-			\item De remote branch (\texttt{origin/vakken}) verschijnt nu ook in het lijstje bekende branches als je op de branch-naam in de statusbalk klikt.
+			\item De remote branch (\texttt{origin/vakken}) verschijnt nu ook in het lijstje bekende branches als je op de branchnaam in de statusbalk klikt.
 		\end{itemize}
 	\end{itemize}
 	
 	\subsection{Pull -- Branches van \github\ halen} 
 	Met \texttt{Fetch} gingen we enkel na \emph{of} er online aanpassingen zijn gemaakt. Om de lokale repository effectief aan te passen aan wat er online is veranderd, gebruiken we \texttt{Pull}.
 	\begin{itemize}
-		\item Klik in \vscode\ op de branch-naam in de statusbalk en in het lijstje dat verschijnt op \texttt{Create New Local Branch From...}.
+		\item Klik in \vscode\ op de branchnaam in de statusbalk en in het lijstje dat verschijnt op \texttt{Create New Branch From...}.
 		\item Kies voor de branch \texttt{origin/vakken}.
 		\item Geef de nieuwe lokale branch de naam \texttt{vakken}.
 		\begin{itemize}
@@ -348,7 +354,7 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 		\item Klik nu op \texttt{Publish Branch}, de branch wordt nu ook naar \github\ verzonden. 
 		\begin{itemize}
 			\item Op \github\ zijn nu ook de drie branches zichtbaar: \texttt{main}, \texttt{hobbies}, \texttt{vakken}.
-			\item In het \texttt{Graph}-venster \vscode\ worden de drie branches ten opzicht van elkaar getoond, in verschillende kleuren. Bij elke branch-naam hoort nu ook een cloud-symbooltje dat de (laatst gekende) toestand van de bijhorende repository op \github\ toont. 
+			\item In het \texttt{Graph}-venster van \vscode\ worden de drie branches ten opzichte van elkaar getoond, in verschillende kleuren. Bij elke branchnaam hoort nu ook een cloud-symbooltje dat de (laatst gekende) toestand van de bijhorende repository op \github\ toont. 
 		\end{itemize}
 	\end{itemize} 
 	
@@ -374,7 +380,7 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 	\begin{itemize}
 		\item Schakel over naar de \emph{doelbranch} \texttt{main}, de branch waarin aanpassingen zullen worden overgenomen.
 		\item Klik in \texttt{Source Control}, naast \texttt{Changes} op \texttt{More Actions}, \texttt{Branch}, \texttt{Merge}.
-		\item Kies in de lijst voor de \emph{bronbranch} \texttt{hobbies}, de branch waaruit aanpassingen zullen worden overgenomen.
+		\item Kies in de lijst voor de \emph{bronbranch} \texttt{hobbies}, waaruit aanpassingen zullen worden overgenomen.
 		\begin{itemize}
 			\item In \texttt{Explorer} verschijnt het bestand \texttt{hobbies.txt}.
 			\item In de \texttt{Graph} komen de paden van \texttt{main} en \texttt{hobbies} opnieuw samen.
@@ -395,10 +401,10 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 	\begin{itemize}
 		\item[] Een \emph{contributor} doet een bijdrage aan een repository in een eigen branch. Dit gebeurt typisch op het eigen lokale systeem, waarna de aanpassingen gepusht worden naar de \github-repository. Hier pasten we ter illustratie een online bestand rechtstreeks aan. Nu stelt de contributor voor om de aanpassingen in de hoofdbranch op te nemen.
 		\item Klik in \github\ op \texttt{Pull requests} en vervolgens op \texttt{New pull request}.
-		\item Kies in de drop-down list de ontvangende ``\texttt{base}''-branch \texttt{main} en rechts de branch \texttt{vakken} waaruit de aanpassingen zullen worden gehaald.
+		\item Kies in de drop-down list de ontvangende ``\texttt{base}''-branch \texttt{main} en rechts de branch \texttt{vakken} waaruit de aanpassingen zullen worden gehaald. Er verschijnen twee lijsten:
 		\begin{itemize}
-			\item Er verschijnt een lijst van alle commits die er ten opzichte van de \texttt{base}-branch zijn geweest.
-			\item Daaronder staat een lijst van alle bestanden (of bestandsinhouden, zie verder) die zijn gewijzigd.
+			\item Alle commits die er ten opzichte van de \texttt{base}-branch zijn geweest.
+			\item Alle bestanden (of bestandsinhouden, zie verder) die zijn gewijzigd.
 		\end{itemize}
 		\item Klik op \texttt{Create pull request}, geef een beschrijving en klik opnieuw op \texttt{Create pull request}.
 		\item[] In deze simulatie speel je beide rollen, maar in de praktijk zijn de volgende stappen voor de \emph{reviewer}, die een overzicht te zien krijgt van commits en eventuele conflicten (momenteel geen) en beslist om de merge al dan niet te laten doorgaan. 
@@ -431,19 +437,22 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 	
 	\git\ kon beide wijzigingen automatisch combineren omdat ze verschillende delen van hetzelfde bestand aanpasten. Dit werkt zolang de inhoud van eenzelfde lijn niet is aangepast.
 	
-	\subsection{Een merge met conflict} We creëren eerst een situatie dat tot een conflict zal leiden, en zullen het daarna proberen oplossen.
+	\subsection{Een merge met conflict} We creëren eerst een situatie die tot een conflict zal leiden, en zullen het daarna proberen oplossen.
 	
 	\begin{itemize}
 		\item Maak een nieuwe branch \texttt{conflict}, verander in het bestand \texttt{gegevens.txt} de woonplaats in je werkelijke woonplaats, sla op en commit de wijziging.
 		\item Terug in de branch \texttt{main} staat in \texttt{gegevens.txt} nog \texttt{Woonplaats: Gallifrey}. Verander dit in \texttt{Woonplaats: Camelot}. Dit simuleert een andere contributor die simultaan een (kennelijk opnieuw foute) aanpassing maakt. Opslaan en committen.
-		\item Merge de branch \texttt{conflict } met \texttt{main} (\texttt{ctrl+shift+P}, \texttt{Git: Merge...}).
+		\item Merge de branch \texttt{conflict} met \texttt{main} (\texttt{ctrl+shift+P}, \texttt{Git: Merge...}).
 		\begin{itemize}
 			\item \git\ detecteert conflicterende aanpassingen en kan nu niet automatisch beslissen welke versie correct is.
 			\item Bekijk beide versies grondig in de editor en beslis welke actie er moet worden ondernomen.
 		\end{itemize}
 		\item Klik op \texttt{Resolve merge} en dan op \texttt{accept} (of \texttt{remove}) boven de lijnen die je wil behouden (of net niet). Kies in dit geval om enkel de lijn uit de doelbranch \texttt{main} te behouden.
 		\item Pas na het afhandelen van het conflict, kan een commit uitgevoerd worden om de merge definitief te voltooien.
-		\item Push nog de laatste aanpassingen naar \github\ (\texttt{Sync Changes}).
+		\item Synchroniseer nog met \github\ (\texttt{Sync Changes}). 
+		\begin{itemize}
+		\item Intussen begrijpen we dat synchroniseren, wat een pull én een push uitvoert, de lokale en de remote branch wederzijds aanpast en dus identiek maakt.
+		\end{itemize}
 	\end{itemize}
 	
 	\subsection{Terminologie}
@@ -472,10 +481,11 @@ Om toch aan zo'n repository te kunnen bijdragen, gebruikt GitHub zogenaamde \emp
     \item Open de repository \href{https://github.com/srebry/test}{\texttt{github.com/srebry/test}}.
     \item Klik rechtsboven op \texttt{Fork}.
     \item Kies je eigen \github-account als bestemming.
+    \item Je kan kiezen om alle branches te kopiëren door de optie \texttt{Copy the main branch only} te deselecteren (hier speelt dat geen rol).
     \item Bevestig.
     \begin{itemize}
         \item In je eigen account verschijnt nu de nieuwe repository. Interessant om weten: forks van publieke repositories blijven automatisch publiek.
-        \item Alle bestanden, branches en commits werden gekopieerd.
+        \item Alle bestanden en commits werden gekopieerd, en eventueel ook de branches als je dat hebt gekozen.
 		\item De nieuwe repository, de \emph{fork}, blijft verwijzen naar de bron, de zogenaamde \emph{upstream repository}, al kan je zelf geen merge uitvoeren naar deze bron.
 		\item Net zoals bij een branch kunnen wijzigingen via een \emph{pull request} worden voorgesteld aan de upstream repository.
 		\item Verschijnen er nieuwe commits in de upstream repository, dan kunnen die worden overgenomen door in \github\ te klikken op \texttt{Sync fork}, \texttt{Update branch}.
@@ -492,13 +502,13 @@ Het lokaal kopiëren van een online repository heet \emph{clonen}.
     \item Open de fork die je zonet hebt gemaakt op \github.
     \item Klik op de groene knop \texttt{Code}.
     \item Kopieer de HTTPS-link van de repository.
-    \item Om een nieuw project te beginnen, open je een nieuw venster van \vscode (\texttt{ctrl+shift+N}).
+    \item Om een nieuw project te beginnen, open je een nieuw venster van \vscode\ (\texttt{ctrl+shift+N}).
     \item Ga naar \texttt{Source Control} en klik op \texttt{Clone Repository}
-    \item Plak de gekopieerde URL.
+    \item Plak de gekopieerde URL en bevestig.
     \item Maak als doelmap een nieuwe map \texttt{test} in de map \texttt{C:\textbackslash Projecten}.
     \begin{itemize}
         \item Alle bestanden uit de repository verschijnen in \texttt{Explorer}.
-        \item De volledige geschiedenis van commits en branches wordt mee gekopieerd en getoond in de \texttt{Graph}.
+        \item De volledige geschiedenis van commits (en eventueel branches) wordt mee gekopieerd en getoond in de \texttt{Graph}.
         \item Wijzigingen kunnen tussen de clone en de origin worden uitgewisseld met \texttt{Push} en \texttt{Pull}.
     \end{itemize}
 	\item Vervang je eigen r-nummer in het bestand \texttt{studenten.txt} door je voornaam. Voeg het bestand \texttt{voornaam\_naam.pdf} dat je in de vorige zelfstudie \LaTeX\ hebt gemaakt aan de juiste team-map.
@@ -516,12 +526,10 @@ Een clone is dus veel meer dan een gewone kopie van de bestanden die je via \tex
     \item \emph{Origin}: de remote repository waarvan een clone afkomstig is.
 \end{itemize}
 
-\end{document}
-
 	\section{Werkverdeling: issues en assignees}
 	\label{sec:issues}
 	
-	Tot nu toe hebben we wijzigingen rechtstreeks uitgevoerd op bestanden. Bij grotere projecten is het echter nuttig om eerst vast te leggen \emph{wat} er moet gebeuren. Daarvoor gebruikt \github\ \emph{issues}. Deze beschrijven een taak die nog moet worden uitgevoerd, een nieuwe functie die moet worden toegevoegd of een fout die moet worden opgelost. Om er voor te zorgen dat niet iedereen hetzelfde probleem aan het oplossen is, kunnen issues toegekend worden aan een specifieke contributor, de \emph{assignee}.
+	Tot nu toe hebben we wijzigingen rechtstreeks uitgevoerd op bestanden. Bij grotere projecten is het echter nuttig om eerst vast te leggen \emph{wat} er moet gebeuren. Daarvoor gebruikt \github\ \emph{issues}. Deze beschrijven een taak die nog moet worden uitgevoerd, een nieuwe functie die moet worden toegevoegd of een fout die moet worden opgelost. Om ervoor te zorgen dat niet iedereen hetzelfde probleem aan het oplossen is, kunnen issues toegekend worden aan een specifieke contributor, de \emph{assignee}.
 	
 	\subsection{Een issue en branch aanmaken}  We zullen een eerste issue aanmaken voor onze repository. Zoals steeds worden wijzigingen niet rechtstreeks op \texttt{main} uitgevoerd, maar in een nieuwe branch die specifiek aan de issue gekoppeld is. In de praktijk worden de taken in deze workflow over twee personen verdeeld, de reviewer en een contributor.
 	
@@ -533,7 +541,7 @@ Een clone is dus veel meer dan een gewone kopie van de bestanden die je via \tex
 		\begin{itemize}
 			\item De issue verschijnt nu in de lijst met openstaande issues.
 		\end{itemize}
-		\item Open de issue dat net is aangemaakt.
+		\item Open de issue die net is aangemaakt.
 		\item Klik op de tekst \texttt{Create branch} in de rechter kolom onder \texttt{Development}.
 		\item Geef een duidelijke branchnaam \texttt{1-film} die issue-nummer en omschrijving omvat.
 		\begin{itemize}
@@ -565,12 +573,12 @@ Een clone is dus veel meer dan een gewone kopie van de bestanden die je via \tex
 	\end{itemize}
 	
 	
-	\subsection{De issue sluiten} In de volgende stap,  zal de reviewer moeten nagaan of de aanpassingen de issue effectief oplossen.
+	\subsection{De issue sluiten} In de volgende stap zal de reviewer moeten nagaan of de aanpassingen de issue effectief oplossen.
 	
 	\begin{itemize}
 		\item De reviewer behandelt de pull request en klikt op \texttt{Confirm merge} als de aanpassingen mogen worden overgenomen in de doelbranch en de issue daarmee opgelost is.
 		\begin{itemize}
-			\item Doordat de branch \texttt{1-film} aan de issue is gekoppeld, sluit deze merge de issue automatisch af. De issue is nog terug te vinden bij de \texttt{Closed issues}
+			\item Doordat de branch \texttt{1-film} aan de issue is gekoppeld, sluit deze merge de issue automatisch af. De issue is nog terug te vinden bij de \texttt{Closed issues}.
 			\item Blijkt de merge toch niet afdoende, dan kan de issue opnieuw worden geopend: \github\, \texttt{Issues}, \texttt{Closed}, klik op het onterecht gesloten issue, \texttt{Reopen issue}.
 			\item Is de issue op een andere manier opgelost, zonder merge van de aangehechte branch, dan kan deze manueel worden afgesloten: \github\, \texttt{Issues}, klik op de issue die kan worden afgesloten, \texttt{Close issue}.
 			\item In het closed issue overzicht is het mogelijk om na te gaan wie welke deeltaak heeft opgelost en dus aan wie vragen daarover te richten.
@@ -586,10 +594,10 @@ Een clone is dus veel meer dan een gewone kopie van de bestanden die je via \tex
 		\item \emph{Closed issue}: een issue dat werd opgelost of afgewerkt.
 	\end{itemize}
 	
-	\section{De teamopdacht, repository en workflows}
+	\section{De teamopdracht, repository en workflows}
 	\label{sec:teamopdracht}
 	
-	\subsection{Team repository} Elk team werkt in een fork van de repository \texttt{teamopdrachtX} met \texttt{X} de letter het team. De teamleider zal de verantwoordelijkheid hebben om alle eindproducten (opgeloste oefeningen, Python-scripts, eindverslag en poster, \ldots) aan de \texttt{main}-branch van deze repository toe te voegen door verschillende branches te mergen.
+	\subsection{Team repository} Elk team werkt in een fork van de repository \texttt{teamopdrachtX} met \texttt{X} de letter van het team. De teamleider zal de verantwoordelijkheid hebben om alle eindproducten (opgeloste oefeningen, Python-scripts, eindverslag en poster, \ldots) aan de \texttt{main}-branch van deze repository toe te voegen door verschillende branches te mergen.
 	
 	\subsection{Wekelijkse deelopdrachten} De wekelijkse opgave wordt in de map \texttt{0-bronnen} van de upstream repository geplaatst door de begeleiders. De knop \texttt{Sync fork} in \github\ laat toe om deze naar de team-repository te halen.
 
@@ -624,7 +632,7 @@ Niet alle branches zijn echter tijdelijk. Sommige projecten gebruiken meerdere b
 	
 	Tracht gestructureerd te werken, één deelprobleempje tegelijk, en voer snel genoeg een commit uit. Die documenteert dan achteraf wat er al is gebeurd.
 	
-	Zolang je eigen bijdragen niet naar \github\ zijn gepushed, bestaan deze niet voor andere teamleden en de begeleiding. Aarzel niet om dat af en toe te doen:
+	Zolang je eigen bijdragen niet naar \github\ zijn gepusht, bestaan deze niet voor andere teamleden en de begeleiding. Aarzel niet om dat af en toe te doen:
 	\begin{itemize}
 		\item Onmiddellijk bij het afwerken van een issue.
 		\item Blijf niet urenlang staren naar een opdracht als je vast komt te zitten. Beschrijf het probleem waar je mee worstelt en deel het als een nieuwe issue of sub-issue.
