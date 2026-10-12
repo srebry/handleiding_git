@@ -458,6 +458,188 @@ git config --global user.email "jouw-e-mail@student.kuleuven.be"
 		\item \emph{Merge conflict}: een situatie waarin \git\ niet automatisch kan bepalen welke versie moet worden behouden.
 	\end{itemize}
 	
+	\section{Werkverdeling: issues en assignees}
+	\label{sec:issues}
+	
+	In sectie \ref{sec:merge} hebben we geleerd hoe een contributor wijzigingen voorstelt en een reviewer deze controleert en samenvoegt. Bij samenwerking leggen we vooraf ook vast \emph{wat} er moet gebeuren en \emph{wie} dat zal uitvoeren. Daarvoor gebruikt \github\ \emph{issues} en \emph{assignees}. Een issue beschrijft een taak, een gewenste functie of een fout; de assignee is de contributor die de taak opneemt. We oefenen eerst met één issue. In sectie \ref{sec:github-projectplanning} brengen we meerdere issues samen in een planning en in sectie \ref{sec:teamopdracht} passen we dit toe op de teamopdracht.
+	
+	\subsection{Een issue en branch aanmaken} We keren terug naar de eigen oefenrepository \texttt{gittest}, met het bestand \texttt{gegevens.txt}. We beschrijven een kleine taak in een issue en voeren de wijziging uit in een aparte branch. In de praktijk verdelen we het werk over een reviewer en een contributor; in deze oefening speel je zelf beide rollen.
+	
+	\begin{itemize}
+		\item[] De reviewer wil dat een contributor aan het bestand \texttt{gegevens.txt} de naam van de favoriete film toevoegt en voert volgende stappen uit.
+		\item Open de repository op \github\ en klik bovenaan op \texttt{Issues}.
+		\item Klik op \texttt{New Issue}. Geef het issue de titel ``Favoriete film toevoegen'' en beschrijf dat de naam van de favoriete film in \texttt{gegevens.txt} moet komen.
+		\item Klik op \texttt{Create}.
+		\begin{itemize}
+			\item Het issue verschijnt nu in de lijst met openstaande issues en krijgt automatisch een nummer. In dit voorbeeld gebruiken we nummer 1; vervang dit in de volgende stappen door het werkelijke nummer van jouw issue.
+		\end{itemize}
+		\item Open het issue dat net is aangemaakt.
+		\item Klik op de tekst \texttt{Create a branch} in de rechter kolom onder \texttt{Development}.
+		\item Maak de branch aan vanaf \texttt{main}. Geef de branch de naam \texttt{1-film}, met het issue-nummer en een korte omschrijving.
+		\begin{itemize}
+			\item De branch bestaat momenteel enkel op \github.
+			\item \github\ voorziet \git-commando's om de nieuwe branch naar de lokale repository te pullen, maar de werkwijze vanuit \vscode\ zoals hierboven werkt even goed.
+		\end{itemize}
+	\end{itemize}
+	
+	\subsection{Een assignee toekennen} Een issue kan aan één of meerdere personen worden toegewezen.
+	
+	\begin{itemize}
+		\item Open opnieuw het zonet aangemaakte issue.
+		\item Klik op het tandwiel naast \texttt{Assignees} in de rechter kolom.
+		\item Selecteer een of meerdere contributors van de repository (voorlopig is dat enkel jijzelf).
+		\begin{itemize}
+			\item Het issues-overzicht toont op elk moment welke taken nog openstaan.
+			\item In de meest rechtse kolom zie je wie verantwoordelijk is voor een taak en welke taken nog niet zijn toegekend.
+			\item De filter \texttt{Assignees} laat toe de taken van een bepaalde contributor (bijvoorbeeld jezelf) te tonen.
+		\end{itemize}
+	\end{itemize}
+	
+	\subsection{De wijziging uitvoeren} Deze kleine aanpassing kunnen we rechtstreeks op \github\ doorvoeren. Grotere issues vergen de fetch-pull-commit-push-cyclus uit deel \ref{sec:branches}.
+	
+	\begin{itemize}
+		\item[] De contributor die het issue zal opvolgen, voert volgende stappen uit.
+		\item Open op \github\ in de branch \texttt{1-film} het bestand \texttt{gegevens.txt}. Voeg een nieuwe lijn toe met daarop de naam van je favoriete film en sla het bestand op.
+		\item Maak een commit. De gevraagde wijziging staat nu in de branch \texttt{1-film}, maar nog niet in \texttt{main}. Het issue blijft daarom open.
+		\item Maak een pull request van \texttt{1-film} naar \texttt{main}, zoals in sectie \ref{sec:merge}. Controleer dat het issue bij \texttt{Development} is gekoppeld. Je kunt de koppeling ook leggen door \texttt{Closes \#1} in de beschrijving op te nemen, met het juiste issue-nummer.
+	\end{itemize}
+	
+	
+	\subsection{Het issue sluiten} De reviewer controleert of de bijdrage aan de taakbeschrijving voldoet. Het issue wordt pas gesloten wanneer de gecontroleerde wijziging in \texttt{main} is opgenomen.
+	
+	\begin{itemize}
+		\item De reviewer behandelt de pull request. Zijn er nog verbeteringen nodig, dan past de contributor dezelfde branch aan en volgt een nieuwe controle. Na goedkeuring klikt de reviewer op \texttt{Merge pull request} en vervolgens op \texttt{Confirm merge} om de bijdrage naar \texttt{main} te mergen.
+		\begin{itemize}
+			\item Omdat de pull request aan het issue is gekoppeld en naar de standaardbranch \texttt{main} wordt gemerged, sluit \github\ het issue automatisch. Je vindt het terug bij de \texttt{Closed issues}.
+			\item Blijkt de merge toch niet afdoende, dan kan het issue opnieuw worden geopend: \github\, \texttt{Issues}, \texttt{Closed}, klik op het onterecht gesloten issue, \texttt{Reopen issue}.
+			\item Is de taak op een andere manier afgewerkt, dan kan het issue manueel worden afgesloten. Beschrijf eerst in een reactie hoe de taak is afgewerkt en klik vervolgens op \texttt{Close issue}.
+			\item Via de gesloten issues kun je achteraf nagaan wie een taak heeft uitgevoerd en welke wijzigingen erbij horen.
+		\end{itemize}
+	\end{itemize}
+	
+	Een merge naar een andere branch sluit het issue niet op deze manier. Bij de teamopdracht komt een bijdrage eerst in een deelbranch terecht; pas na opname in \texttt{main} is de taak volledig afgewerkt (sectie \ref{sec:teamopdracht}).
+
+	\subsection{Terminologie}
+	
+	\begin{itemize}
+		\item \emph{Issue}: een probleem, taak of vraag die moet worden opgevolgd. Issues kunnen erg uiteenlopend zijn, ze kunnen een fout (\emph{bug}) in een bestaand document signaleren, of vragen om een extra functie (\emph{feature request}).
+		\item \emph{Assignee}: de contributor die is toegekend aan het oplossen van een specifiek issue.
+		\item \emph{Open issue}: een issue waarvoor nog geen oplossing beschikbaar is.
+		\item \emph{Closed issue}: een issue dat werd opgelost of afgewerkt.
+	\end{itemize}
+	
+\section{Projectplanning met GitHub Projects}
+\label{sec:github-projectplanning}
+
+Met de issues en assignees uit sectie \ref{sec:issues} leggen we vast wat er
+moet gebeuren en wie een taak uitvoert. Om ook de voortgang en de deadlines
+te overzien, gebruiken we
+\emph{GitHub Projects}. Een project kan de issues voorstellen als kaarten op
+een \emph{kanbanbord}: de kolom waarin een kaart staat, geeft de status van
+de taak aan. Het bord is dus geen afzonderlijke takenlijst, maar een andere
+weergave van de bestaande issues.
+
+In deze sectie leren we een projectbord instellen en gebruiken. Je kunt dit
+oefenen met de repository \texttt{gittest}. De afspraken voor het gezamenlijke
+bord van de teamopdracht volgen in sectie \ref{sec:teamopdracht}.
+
+\subsection{Een project aanmaken en delen}
+
+De eigenaar van de repository maakt het project onder de eigen
+\github-account aan.
+\begin{enumerate}
+    \item Open op GitHub je profiel en kies \texttt{Projects},
+    \texttt{New project}. Kies onder \texttt{Start from scratch} voor
+    \texttt{Board}, geef het project een herkenbare naam, bijvoorbeeld
+    ``Planning -- gittest'', en klik op \texttt{Create project}.
+    \item Open de repository en kies \texttt{Projects},
+    \texttt{Link a project}. Selecteer het aangemaakte project.
+    \item Open in het project het menu rechtsboven en kies
+    \texttt{Settings}, \texttt{Manage access}. Werk je samen met anderen,
+    nodig hen dan uit met de rol \texttt{Write}, zodat zij het bord kunnen
+    aanpassen.
+\end{enumerate}
+
+Toegang tot het project en toegang tot de repository worden afzonderlijk
+beheerd. Controleer bij samenwerking dus dat iedereen toegang heeft tot
+beide.
+
+\subsection{Issues aan het project toevoegen}
+
+Open een bestaand issue in de repository. Klik in de rechterkolom op
+\texttt{Projects} en selecteer het project. Het issue verschijnt nu ook
+als kaart op het bord. Je hoeft de taakbeschrijving dus niet opnieuw in te
+voeren. Herhaal dit voor de andere taken.
+
+Gebruik voor deze werkwijze de issues als taakkaarten. Maak niet nog eens
+een afzonderlijke taak aan voor de pull request waarmee hetzelfde issue
+wordt opgelost.
+
+\subsection{De voortgang bijhouden}
+
+De bordkolommen worden bepaald door het veld \texttt{Status}. Open de
+projectinstellingen en pas de opties van dit veld aan. Controleer op het
+bord bij \texttt{View}, \texttt{Column field} dat \texttt{Status} geselecteerd
+is. Geef de kolommen namen die bij de werkwijze passen, zoals \texttt{Te doen},
+\texttt{Bezig} en \texttt{Afgewerkt}. De uitgebreidere statussen voor de
+teamopdracht staan in sectie \ref{ssec:teamplanning}.
+
+Sleep een kaart naar een andere kolom om de status te wijzigen. Dit is
+alleen een aanpassing van de planning: het verplaatsen van een kaart
+vervangt geen review of merge.
+
+Via het projectmenu \texttt{Workflows} kun je instellen dat gesloten issues
+automatisch de status \texttt{Afgewerkt} krijgen. Kies daarbij de statusnaam
+die je op jouw bord gebruikt. Het sluiten van een issue en het wijzigen
+van de bordstatus blijven afzonderlijke handelingen, tenzij je hiervoor
+een automatisering instelt.
+
+\subsection{Deadlines toevoegen en zichtbaar maken}
+\label{ssec:projectdeadlines}
+
+We voegen een datumveld toe om voor elke taak een deadline vast te leggen.
+\begin{enumerate}
+    \item Klik in het project op \texttt{View} en kies onder
+    \texttt{Layout} voor \texttt{Table}.
+    \item Klik rechts van de kolomkoppen op de knop om een veld toe te
+    voegen en kies \texttt{New field}. Geef het veld de naam
+    \texttt{Deadline}, selecteer het type \texttt{Date} en klik op
+    \texttt{Save}.
+    \item Vul in de nieuwe kolom voor elk gepland issue een datum in.
+    Je kunt deze intypen of selecteren met de kalender.
+\end{enumerate}
+
+Schakel terug naar \texttt{Board}. Kies \texttt{View}, \texttt{Fields} en
+maak \texttt{Assignees} en \texttt{Deadline} zichtbaar op de kaarten.
+Via \texttt{View}, \texttt{Sort}, \texttt{Deadline} kun je de kaarten ook
+op deadline sorteren.
+
+Om alleen openstaande issues te zien waarvan de deadline verstreken is,
+typ je in de filterbalk:
+\begin{verbatim}
+is:issue is:open deadline:<@today
+\end{verbatim}
+Hierbij staat \texttt{@today} voor de huidige dag. Verwijder de filter om
+opnieuw alle taken te zien.
+
+Het bord toont nu per taak wie eraan werkt, wat de status is en wanneer de
+taak klaar moet zijn. In sectie \ref{sec:teamopdracht} verbinden we deze
+planning met de branches, reviews en teamvergaderingen van de teamopdracht.
+
+% Bronnen bij de aanvullende GitHub-functionaliteit
+% GitHub Docs, geraadpleegd op 12 oktober 2026:
+% https://docs.github.com/en/issues/planning-and-tracking-with-projects/creating-projects/creating-a-project
+% https://docs.github.com/en/issues/planning-and-tracking-with-projects/managing-your-project/adding-your-project-to-a-repository
+% https://docs.github.com/en/issues/planning-and-tracking-with-projects/managing-your-project/managing-access-to-your-projects
+% https://docs.github.com/en/issues/planning-and-tracking-with-projects/managing-items-in-your-project/adding-items-to-your-project
+% https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-single-select-fields
+% https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/customizing-the-board-layout
+% https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue
+% https://docs.github.com/en/issues/planning-and-tracking-with-projects/automating-your-project/using-the-built-in-automations
+% https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-date-fields
+% https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/changing-the-layout-of-a-view
+% https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/filtering-projects
+
 \section{Starten van een bestaande repository}
 
 Hierboven werd een repository lokaal aangemaakt, startend van een lege map, en vervolgens naar \github\ gepubliceerd. In de praktijk zal je echter vaak starten van een bestaande repository die zich al op GitHub bevindt: omdat je wil verder werken aan een reeds bestaande repository of omdat een teamlid de repository heeft geïnitialiseerd.
@@ -516,120 +698,153 @@ Een clone is dus veel meer dan een gewone kopie van de bestanden die je via \tex
     \item \emph{Origin}: de remote repository waarvan een clone afkomstig is.
 \end{itemize}
 
-\end{document}
+\section{De teamopdracht: repository, planning en workflow}
+\label{sec:teamopdracht}
 
-	\section{Werkverdeling: issues en assignees}
-	\label{sec:issues}
-	
-	Tot nu toe hebben we wijzigingen rechtstreeks uitgevoerd op bestanden. Bij grotere projecten is het echter nuttig om eerst vast te leggen \emph{wat} er moet gebeuren. Daarvoor gebruikt \github\ \emph{issues}. Deze beschrijven een taak die nog moet worden uitgevoerd, een nieuwe functie die moet worden toegevoegd of een fout die moet worden opgelost. Om er voor te zorgen dat niet iedereen hetzelfde probleem aan het oplossen is, kunnen issues toegekend worden aan een specifieke contributor, de \emph{assignee}.
-	
-	\subsection{Een issue en branch aanmaken}  We zullen een eerste issue aanmaken voor onze repository. Zoals steeds worden wijzigingen niet rechtstreeks op \texttt{main} uitgevoerd, maar in een nieuwe branch die specifiek aan de issue gekoppeld is. In de praktijk worden de taken in deze workflow over twee personen verdeeld, de reviewer en een contributor.
-	
-	\begin{itemize}
-		\item[] De reviewer wil dat een contributor aan het bestand \texttt{gegevens.txt} de naam van de favoriete film toevoegt en voert volgende stappen uit.
-		\item Open de repository op \github\ en klik bovenaan op \texttt{Issues}.
-		\item Klik op \texttt{New Issue} en geef een titel (\texttt{1-film}) en beschrijving aan de issue.
-		\item Klik op \texttt{Create}.
-		\begin{itemize}
-			\item De issue verschijnt nu in de lijst met openstaande issues.
-		\end{itemize}
-		\item Open de issue dat net is aangemaakt.
-		\item Klik op de tekst \texttt{Create branch} in de rechter kolom onder \texttt{Development}.
-		\item Geef een duidelijke branchnaam \texttt{1-film} die issue-nummer en omschrijving omvat.
-		\begin{itemize}
-			\item De branch bestaat momenteel enkel op \github.
-			\item \github\ voorziet \git-commando's om de nieuwe branch naar de lokale repository te pullen, maar de werkwijze vanuit \vscode\ zoals hierboven werkt even goed.
-		\end{itemize}
-	\end{itemize}
-	
-	\subsection{Een assignee toekennen} Een issue kan aan één of meerdere personen worden toegewezen.
-	
-	\begin{itemize}
-		\item Open opnieuw het zonet aangemaakte issue.
-		\item Klik op het tandwiel naast \texttt{Assignees} in de rechter kolom.
-		\item Selecteer een of meerdere contributors van de repository (voorlopig is dat enkel jijzelf).
-		\begin{itemize}
-			\item Het issues-overzicht toont op elk moment welke taken nog open staan.
-			\item In de meest rechtse kolom zie je wie verantwoordelijk is voor een taak en welke taken nog niet zijn toegekend.
-			\item De knop \texttt{assignees} laat toe de taken van een bepaalde contributor (bijvoorbeeld jezelf) te filteren.
-		\end{itemize}
-	\end{itemize}
-	
-	\subsection{De wijziging uitvoeren} Deze kleine aanpassing kunnen we rechtstreeks op \github\ doorvoeren. Grotere issues vergen de fetch-pull-commit-push-cyclus uit deel \ref{sec:branches}.
-	
-	\begin{itemize}
-		\item[] De contributor die de issue zal opvolgen, voert volgende stappen uit.
-		\item Open op \github\ in de branch \texttt{1-film} het bestand \texttt{gegevens.txt}. Voeg een nieuwe lijn toe met daarop de naam van je favoriete film en sla het bestand op.
-		\item Maak een commit. In de \texttt{1-film}-branch is de gevraagde issue opgelost, maar nog niet in de \texttt{main}-branch.
-		\item In dit geval lost één commit de issue op, de contributor doet een pull request.
-	\end{itemize}
-	
-	
-	\subsection{De issue sluiten} In de volgende stap,  zal de reviewer moeten nagaan of de aanpassingen de issue effectief oplossen.
-	
-	\begin{itemize}
-		\item De reviewer behandelt de pull request en klikt op \texttt{Confirm merge} als de aanpassingen mogen worden overgenomen in de doelbranch en de issue daarmee opgelost is.
-		\begin{itemize}
-			\item Doordat de branch \texttt{1-film} aan de issue is gekoppeld, sluit deze merge de issue automatisch af. De issue is nog terug te vinden bij de \texttt{Closed issues}
-			\item Blijkt de merge toch niet afdoende, dan kan de issue opnieuw worden geopend: \github\, \texttt{Issues}, \texttt{Closed}, klik op het onterecht gesloten issue, \texttt{Reopen issue}.
-			\item Is de issue op een andere manier opgelost, zonder merge van de aangehechte branch, dan kan deze manueel worden afgesloten: \github\, \texttt{Issues}, klik op de issue die kan worden afgesloten, \texttt{Close issue}.
-			\item In het closed issue overzicht is het mogelijk om na te gaan wie welke deeltaak heeft opgelost en dus aan wie vragen daarover te richten.
-		\end{itemize}
-	\end{itemize}
-	
-	\subsection{Terminologie}
-	
-	\begin{itemize}
-		\item \emph{Issue}: een probleem, taak of vraag die moet worden opgevolgd. Issues kunnen erg uiteenlopend zijn, ze kunnen een fout (\emph{bug}) in een bestaand document signaleren, of vragen om een extra functie (\emph{feature request}).
-		\item \emph{Assignee}: de contributor die is toegekend aan het oplossen van een specifiek issue.
-		\item \emph{Open issue}: een issue waarvoor nog geen oplossing beschikbaar is.
-		\item \emph{Closed issue}: een issue dat werd opgelost of afgewerkt.
-	\end{itemize}
-	
-	\section{De teamopdacht, repository en workflows}
-	\label{sec:teamopdracht}
-	
-	\subsection{Team repository} Elk team werkt in een fork van de repository \texttt{teamopdrachtX} met \texttt{X} de letter het team. De teamleider zal de verantwoordelijkheid hebben om alle eindproducten (opgeloste oefeningen, Python-scripts, eindverslag en poster, \ldots) aan de \texttt{main}-branch van deze repository toe te voegen door verschillende branches te mergen.
-	
-	\subsection{Wekelijkse deelopdrachten} De wekelijkse opgave wordt in de map \texttt{0-bronnen} van de upstream repository geplaatst door de begeleiders. De knop \texttt{Sync fork} in \github\ laat toe om deze naar de team-repository te halen.
+Voor de teamopdracht combineren we de werkwijzen uit de vorige secties.
+De repository bevat de bestanden en hun geschiedenis, issues beschrijven
+de taken en het projectbord toont de planning. Een bijdrage doorloopt steeds
+dezelfde stappen: afspreken, uitwerken, controleren en samenvoegen.
 
-	\subsection{Vergaderverslagen} De vergaderverslagen worden door de verslaggever voorbereid in de branch \texttt{1-vergaderingen}. Ze worden pas in de \texttt{main}-branch gemerged door de teamleider nadat ze zijn goedgekeurd door het team (meestal pas de volgende vergadering).
-	
-	\subsection{Wekelijkse branches} Voor de deelopdrachten zal telkens een nieuwe branch gemaakt worden, startend van de hoofdbranch \texttt{main}. De branch \texttt{2-oefeningen} is al voorzien, de komende weken komen daar onder meer \texttt{implementatie}, \texttt{verslag} en \texttt{poster} bij, horend bij de deeltaak die jullie in de betreffende week krijgen. De taakverantwoordelijke zal de verantwoordelijkheid hebben om alle deelopdrachten (afzonderlijke oefeningen, scripts of bestanden) in deze branch samen te brengen.
-	
-	\subsection{Issues voor alle deeltaken} Elke week overlegt het team welke deelopdrachten er zijn en de taakverantwoordelijke maakt de corresponderende issues aan. Bij het deel oefeningen zijn dat eenvoudigweg de te maken oefeningen, issues \texttt{oefening01} tot \texttt{oefening13}.
-	
-	Uiteraard is het mogelijk dat er na verloop van tijd nog meer issues bijkomen, bijvoorbeeld een bug die ontdekt wordt in een Python-script of een stuk tekst dat moet herschreven worden.
-	
-	\subsection{Taakverdeling met assignees} Tijdens de teamvergadering wordt beslist hóe jullie de taken zullen verdelen. Om het overzicht te bewaren is het aangewezen dat de issues niet allemaal tegelijk worden verdeeld over de teamleden, maar dat elk teamlid maar één issues markeert waar die op dat moment effectief mee bezig is.
-	
-	\subsection{Feature branches en langlevende branches}
+\subsection{De teamrepository voorbereiden}
 
-	Er blijkt dus dat er in de teamopdracht, net zoals in het merendeel van de \git-repositories, twee soorten branches zullen worden gebruikt. In de voorbeelden van de eerste secties van deze tekst, werden branches gebruikt om een beperkte wijziging uit te werken. Nadat de wijziging was gemerged met de hoofdbranch, had de branch haar doel bereikt. Dergelijke branches noemt men \emph{feature branches}. Na de merge wordt een feature branch vaak verwijderd omdat alle wijzigingen ondertussen in de hoofdbranch aanwezig zijn. Voorbeelden in de teamopdracht zijn\ldots
+Elk team werkt in één gezamenlijke fork van de repository
+\texttt{teamopdrachtX}, met \texttt{X} de letter van het team.
+De teamleider beheert deze fork en geeft de andere teamleden toegang.
+Elk teamlid maakt een lokale clone van de teamrepository, zoals uitgelegd
+bij het starten van een bestaande repository. Zo werken alle teamleden
+aan dezelfde remote repository.
+
+De begeleiders plaatsen de wekelijkse opgave in de map \texttt{0-bronnen}
+van de upstream repository. De teamleider haalt die wijzigingen met
+\texttt{Sync fork} naar de teamrepository. Daarna halen de teamleden de
+bijgewerkte branch met \texttt{Pull} naar hun lokale clone.
+
+\subsection{Branches en verantwoordelijkheden}
+
+We onderscheiden twee soorten branches:
 \begin{itemize}
-\item \texttt{oefening01}, \ldots, \texttt{oefening13}
-\item \texttt{bug-python-script}
-\item \texttt{spellingscontrole-hoofdstuk5}
-\item \texttt{afbeelding-maken-voor-poster}
+    \item \emph{Langlevende branches} verzamelen werk gedurende een langere
+    periode. De hoofdbranch \texttt{main} bevat de goedgekeurde eindproducten.
+    In deelbranches zoals \texttt{1-vergaderingen} en \texttt{2-oefeningen}
+    brengen we bijdragen voor een onderdeel samen. Later komen daar
+    bijvoorbeeld \texttt{implementatie}, \texttt{verslag} en \texttt{poster}
+    bij. Een nieuwe deelbranch vertrekt van \texttt{main}.
+    \item Een \emph{feature branch} dient voor één afgebakende taak en
+    vertrekt van de bijbehorende deelbranch. Een branch
+    \texttt{23-oefening01} voor issue 23 vertrekt bijvoorbeeld van
+    \texttt{2-oefeningen}. Andere voorbeelden zijn een branch voor een fout
+    in een Python-script, voor spellingscontrole of voor een posterfiguur.
+    Na de merge naar de deelbranch kan de feature branch worden verwijderd.
 \end{itemize}
 
-Niet alle branches zijn echter tijdelijk. Sommige projecten gebruiken meerdere branches die permanent blijven bestaan en elk een eigen rol hebben. Men spreekt dan van \emph{langlevende branches}. Voorbeelden hiervan in de context van de teamopdracht zijn
-\begin{itemize}
-\item \texttt{teamX-main}
-\item \texttt{teamX-0-vergaderingen}
-\item \texttt{teamX-0-oefeningen}
-\end{itemize}
+De contributor werkt een taak uit in een feature branch. De
+taakverantwoordelijke treedt op als reviewer en brengt de gecontroleerde
+bijdragen samen in de deelbranch. De teamleider controleert vervolgens het
+volledige onderdeel en neemt het via een pull request op in \texttt{main}.
+Spreek een andere reviewer af wanneer de taakverantwoordelijke zelf de
+contributor is.
 
-	\subsection{Commit, push en merge}
-	
-	Tracht gestructureerd te werken, één deelprobleempje tegelijk, en voer snel genoeg een commit uit. Die documenteert dan achteraf wat er al is gebeurd.
-	
-	Zolang je eigen bijdragen niet naar \github\ zijn gepushed, bestaan deze niet voor andere teamleden en de begeleiding. Aarzel niet om dat af en toe te doen:
-	\begin{itemize}
-		\item Onmiddellijk bij het afwerken van een issue.
-		\item Blijf niet urenlang staren naar een opdracht als je vast komt te zitten. Beschrijf het probleem waar je mee worstelt en deel het als een nieuwe issue of sub-issue.
-		\item Push ál je materiaal aan het einde van de teamsessie.
-	\end{itemize}
+Voor vergaderverslagen bereidt de verslaggever het verslag voor in
+\texttt{1-vergaderingen}. De teamleider mergt het pas naar \texttt{main}
+nadat het team het verslag heeft goedgekeurd, meestal op de volgende vergadering.
+
+\subsection{Het projectbord en de planning afspreken}
+\label{ssec:teamplanning}
+
+De eigenaar van de teamrepository maakt één gezamenlijk project aan,
+bijvoorbeeld ``Teamopdracht -- team X'', volgens de stappen in sectie
+\ref{sec:github-projectplanning}. Het team gebruikt dit project gedurende de
+volledige teamopdracht. Geef alle teamleden de rol \texttt{Write} en zorg
+dat ook de begeleiding toegang heeft tot zowel de repository als het project.
+
+Pas het veld \texttt{Status} aan de volgende teamafspraken aan:
+\begin{description}
+    \item[Te doen:] De taak is beschreven, maar nog niet gestart.
+    \item[Bezig:] De assignee werkt aan de taak.
+    \item[Ter controle:] De contributor heeft de bijdrage uitgewerkt en
+    een pull request aangemaakt. De reviewer moet de wijzigingen nog
+    controleren of opnieuw beoordelen.
+    \item[Nog te integreren:] De bijdrage is gecontroleerd en opgenomen
+    in de deelbranch, bijvoorbeeld \texttt{2-oefeningen}, maar nog niet
+    in \texttt{main}.
+    \item[Afgewerkt:] De bijdrage is gecontroleerd en opgenomen in
+    \texttt{main}.
+\end{description}
+
+Voeg het datumveld \texttt{Deadline} toe en maak dit samen met
+\texttt{Assignees} zichtbaar op de kaarten (sectie \ref{ssec:projectdeadlines}).
+Een deadline betekent hier dat de taak volledig afgewerkt moet zijn,
+inclusief controle en opname in \texttt{main}. Voorzie dus tijd voor
+feedback, verbeteringen en de integratie van de deelbranch.
+
+\subsection{Taken vastleggen en verdelen}
+
+Tijdens de teamvergadering bespreekt het team de nieuwe deelopdrachten.
+De taakverantwoordelijke maakt voor elke afgebakende taak een issue aan,
+bijvoorbeeld \texttt{oefening01} tot \texttt{oefening13}. Beschrijf het
+verwachte resultaat en vermeld in welke deelbranch de bijdrage thuishoort.
+Voeg elk issue toe aan het projectbord, kies de status \texttt{Te doen} en
+leg een deadline vast.
+
+Spreek af wie welke taak opneemt. Een teamlid stelt zichzelf in als assignee
+wanneer die aan de taak begint en verplaatst de kaart naar \texttt{Bezig}.
+Werk bij voorkeur aan één taak tegelijk, zodat de taakverdeling overzichtelijk
+blijft. Nieuwe taken, zoals een ontdekte fout of een te herschrijven tekst,
+krijgen een eigen issue. Maak voor de bijbehorende pull request geen tweede
+taakkaart aan.
+
+\subsection{Van bijdrage tot afgewerkte taak}
+
+Voor een oefening verloopt de samenwerking als volgt:
+\begin{enumerate}
+    \item De contributor haalt de recentste versie van \texttt{2-oefeningen}
+    op en maakt daarvan een feature branch, bijvoorbeeld
+    \texttt{23-oefening01}. Werk de taak uit, maak regelmatig een commit en
+    push de wijzigingen naar de teamrepository.
+    \item Zodra de bijdrage klaar is voor controle, maakt de contributor
+    een pull request naar \texttt{2-oefeningen}. Vermeld het issue-nummer
+    in de beschrijving, bijvoorbeeld \texttt{Zie \#23}, en verplaats de
+    kaart naar \texttt{Ter controle}.
+    \item De taakverantwoordelijke controleert de bijdrage. Gevraagde
+    verbeteringen worden in dezelfde feature branch gecommit en gepusht,
+    zodat de pull request wordt bijgewerkt. Tijdens het herwerken staat
+    de kaart op \texttt{Bezig}; zodra de bijdrage opnieuw kan worden
+    beoordeeld, zet de contributor ze op \texttt{Ter controle}.
+    \item Na goedkeuring mergt de taakverantwoordelijke de bijdrage naar
+    \texttt{2-oefeningen}. De kaart krijgt de status
+    \texttt{Nog te integreren}. Het issue blijft open.
+    \item Wanneer het onderdeel klaar is, maakt de taakverantwoordelijke
+    een pull request van \texttt{2-oefeningen} naar \texttt{main}.
+    Vermeld welke issues daarmee worden afgewerkt. De teamleider controleert
+    het geheel en voert na goedkeuring de merge uit.
+    \item Pas daarna worden de bijbehorende issues gesloten en krijgen
+    hun kaarten de status \texttt{Afgewerkt}. Dit kan automatisch: zet
+    bijvoorbeeld \texttt{Closes \#23} in de beschrijving van de pull request
+    naar \texttt{main} en stel de projectworkflow voor gesloten issues in
+    zoals beschreven in sectie \ref{sec:github-projectplanning}.
+\end{enumerate}
+
+Een sluitinstructie zoals \texttt{Closes \#23} in de beschrijving van een
+pull request werkt alleen wanneer die pull request de standaardbranch
+\texttt{main} als doel heeft. Bij de eerste merge naar
+\texttt{2-oefeningen} gebruik je daarom een gewone verwijzing naar het
+issue. Controleer bij de uiteindelijke merge naar \texttt{main} welke taken
+daadwerkelijk afgewerkt zijn en sluit alleen die issues.
+
+\subsection{De voortgang samen opvolgen}
+
+Open het projectbord bij iedere teamvergadering. Bespreek eerst taken die
+vastlopen, op controle wachten of hun deadline naderen. Bekijk ook welke
+bijdragen nog vanuit een deelbranch naar \texttt{main} moeten worden
+overgebracht. Verdeel daarna het nieuwe werk en leg de deadlines vast.
+
+Werk het bord ook tussen de vergaderingen bij. Loop je vast, beschrijf dan
+de blokkade in een reactie bij het bestaande issue, zodat duidelijk is
+welke hulp nodig is. Maak een nieuw issue als er een afzonderlijke taak
+bijkomt. Push je werk regelmatig en in elk geval aan het einde van een
+teamsessie: alleen gepushte commits zijn zichtbaar voor de andere teamleden
+en de begeleiding.
 
 	\section*{Besluit}
 
